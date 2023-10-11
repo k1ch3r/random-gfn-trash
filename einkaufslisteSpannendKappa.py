@@ -15,13 +15,15 @@ menuString = f'Willst du:\n' + operationsString + '\nGib jetzt die entsprechende
 
 currentInputOperation = 0
 
+# in funktionen beinhaltete sachen als argumente verwenden hilft gegen unuebersichtliche gliederung. also gedanken ueber argumente und funktionen machen und definitione ausserhalb vermeiden evtl oefter ne option an die ich nicht denke?!
+
 def chooseOperation():
     global currentInputOperation
     try:
         currentInputOperation = int(input(menuString))
         print("Gewählte Option:", operationArray[currentInputOperation])
     except ValueError:
-        print('servuus ich bin ein value error. mein aray weiss nicht welche zahl du eingeben willst.')
+        print('servuus ich bin ein value error. mein array weiss nicht welche zahl du eingeben willst.')
     except IndexError:
         print('hallo ich bin ein index error. die zahl steht nicht im array brudi.')
 
