@@ -1,4 +1,6 @@
-operationArray = ['Liste anschauen', 'Etwas auf die Liste schreiben', 'Etwas von der Liste entfernen', 'Programm abballern alla!']
+import ast
+
+dataFilePath = 'listenContent.txt'
 
 def stringifyArray(arrayName):
     return '\n'.join([f'[{index}]: {operation}' for index, operation in enumerate(arrayName)])
@@ -9,10 +11,22 @@ def addItem(itemName):
 def removeItem(itemIndex):
     shoppingListArray.pop(itemIndex)
 
+def load():
+    with open(dataFilePath, 'r') as file:
+        content = file.read()
+        shoppingListArray = ast.literal_eval(content)
+        print(f'Ich habe von {dataFilePath} gelesen')
+        return shoppingListArray
+
+def save():  
+    with open(dataFilePath, 'w') as file:
+        content = str(shoppingListArray)
+        file.write(content)
+        print(f'Ich habe nach {dataFilePath} gespeichert')
+
+operationArray = ['Liste anschauen', 'Etwas auf die Liste schreiben', 'Etwas von der Liste entfernen', 'Programm abballern alla!']
 operationsString = stringifyArray(operationArray)
-
 menuString = f'Willst du:\n' + operationsString + '\nGib jetzt die entsprechende Zahl ein: '
-
 currentInputOperation = 0
 
 # in funktionen beinhaltete sachen als argumente verwenden hilft gegen unuebersichtliche gliederung. also gedanken ueber argumente und funktionen machen und definitione ausserhalb vermeiden evtl oefter ne option an die ich nicht denke?!
@@ -29,7 +43,8 @@ def chooseOperation():
 
 # keine ahnung wann ich catch alls und wann spezifische exceptions brauche tbh aber ist eh nur ein unsinniges spassprojekt.
 
-shoppingListArray = ['nichts', 'leer']
+shoppingListArray = load()
+# shoppingListArray = []
 shoppingListString = stringifyArray(shoppingListArray)
 
 print('Hallo. Weil eine Einkaufsliste als Python Terminal App super spannend und sinnvoll ist kannst du hier Sachen in eine Liste packen und dir die anschauen.\n')
@@ -56,6 +71,7 @@ def menuLoop():
                 print('Okay, ', itemToRemoveName, ' wurde entfernt.')
             elif currentInputOperation == 3:
                 print('schade brudi werd dich vermissen hdgdl baaaaaii')
+                save()
                 break
         except KeyboardInterrupt:
             print('Ctrl + C macht programm aus. Nerd.')
@@ -65,3 +81,5 @@ def menuLoop():
             break
             
 menuLoop()
+
+# so when loading it does not recognize items anymore and splits them into every single letter. i should probably just save as str(shoppingListArray)? 
