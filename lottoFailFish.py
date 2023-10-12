@@ -40,5 +40,3 @@ def drawNumbers(numberCount: int, rangeSize: int):
 
 lotteryNumbers = drawNumbers(6, 49)
 print(lotteryNumbers)
-
-#usage
