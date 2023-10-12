@@ -19,3 +19,14 @@ def drawNumbers(numberCount, rangeSize):
 
 lotteryNumbers = drawNumbers(6, 49)
 print(lotteryNumbers)
+
+
+#meanwhile chatgpt
+# import random
+
+# def drawNumbers(numberCount, rangeSize):
+#     poolToDraw = list(range(1, rangeSize + 1))
+#     return [poolToDraw.pop(random.randint(0, len(poolToDraw) - 1)) for _ in range(numberCount)]
+
+# lotteryNumbers = drawNumbers(6, 49)
+# print(lotteryNumbers)
