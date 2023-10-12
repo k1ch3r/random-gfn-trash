@@ -4,9 +4,7 @@ import random
 
 def generateArray(rangeSize: int):
     '''returns an Array with integer elements from 1 to rangeSize'''
-    returnArray = []
-    for count in range(rangeSize):
-        returnArray.append(count + 1)
+    returnArray = list(range(1, rangeSize + 1))
     return returnArray
 
 def drawFromArray(arrayToAppend: str, arrayToDrawFrom: str):
